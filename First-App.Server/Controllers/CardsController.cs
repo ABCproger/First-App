@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using First_App.Server.DataAccess.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace First_App.Server.Controllers
@@ -7,6 +8,11 @@ namespace First_App.Server.Controllers
     [ApiController]
     public class CardsController : ControllerBase
     {
+        private readonly ICardRepository _cardRepository;
+        public CardsController (ICardRepository cardRepository)
+        {
+            _cardRepository = cardRepository;
+        }
         [HttpPost]
         public async Task<IActionResult> AddCard()
         {
@@ -15,7 +21,8 @@ namespace First_App.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCards()
         {
-            return Ok();
+            var cards = await _cardRepository.GetAllAsync();
+            return Ok(cards);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCard(int id)

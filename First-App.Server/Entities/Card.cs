@@ -1,0 +1,15 @@
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace First_App.Server.Entities
+{
+    public class Card : BaseEntity
+    {
+        [Column("name")]
+        public string Name { get; set; }
+        [Column("description")]
+        public string Description { get; set; }
+        [Column("due_date")]
+        public DateTime DueDate { get; set; }
+        public CardColumn CardColumn { get; set; }
+    }
+}
