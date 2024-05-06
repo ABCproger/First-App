@@ -29,6 +29,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 builder.Services.AddScoped<ICardRepository, CardRepository>();
+builder.Services.AddScoped<ICardColumnRepository, CardColumnRepository>();
 
 var app = builder.Build();
 

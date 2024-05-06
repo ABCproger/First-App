@@ -86,6 +86,7 @@ namespace First_App.Server.Migrations
                         new
                         {
                             Id = 20,
+                            CardColumnId = 20,
                             Description = "some description for first card",
                             DueDate = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
                             Name = "first card"
@@ -93,6 +94,7 @@ namespace First_App.Server.Migrations
                         new
                         {
                             Id = 21,
+                            CardColumnId = 20,
                             Description = "some description for second card",
                             DueDate = new DateTime(2025, 4, 12, 4, 13, 2, 0, DateTimeKind.Utc),
                             Name = "second card"
@@ -100,6 +102,7 @@ namespace First_App.Server.Migrations
                         new
                         {
                             Id = 22,
+                            CardColumnId = 20,
                             Description = "some description for third card",
                             DueDate = new DateTime(2024, 4, 3, 2, 13, 2, 0, DateTimeKind.Utc),
                             Name = "third card"
@@ -107,6 +110,7 @@ namespace First_App.Server.Migrations
                         new
                         {
                             Id = 23,
+                            CardColumnId = 20,
                             Description = "some description for fourth card",
                             DueDate = new DateTime(2024, 1, 12, 12, 13, 2, 0, DateTimeKind.Utc),
                             Name = "fourth card"
@@ -114,6 +118,7 @@ namespace First_App.Server.Migrations
                         new
                         {
                             Id = 24,
+                            CardColumnId = 20,
                             Description = "some description for fifth card",
                             DueDate = new DateTime(2024, 4, 2, 2, 13, 2, 0, DateTimeKind.Utc),
                             Name = "fifth card"
@@ -121,6 +126,7 @@ namespace First_App.Server.Migrations
                         new
                         {
                             Id = 25,
+                            CardColumnId = 21,
                             Description = "some description second column card",
                             DueDate = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
                             Name = "second column card"
@@ -128,6 +134,7 @@ namespace First_App.Server.Migrations
                         new
                         {
                             Id = 26,
+                            CardColumnId = 21,
                             Description = "some description second column card2",
                             DueDate = new DateTime(2024, 4, 8, 2, 13, 2, 0, DateTimeKind.Utc),
                             Name = "second column card2"
@@ -135,6 +142,7 @@ namespace First_App.Server.Migrations
                         new
                         {
                             Id = 27,
+                            CardColumnId = 21,
                             Description = "some description second column card3",
                             DueDate = new DateTime(2024, 4, 9, 2, 13, 2, 0, DateTimeKind.Utc),
                             Name = "second column card3"
@@ -142,6 +150,7 @@ namespace First_App.Server.Migrations
                         new
                         {
                             Id = 28,
+                            CardColumnId = 21,
                             Description = "some description for second column card4",
                             DueDate = new DateTime(2024, 4, 11, 2, 13, 2, 0, DateTimeKind.Utc),
                             Name = "second column card4"
@@ -149,6 +158,7 @@ namespace First_App.Server.Migrations
                         new
                         {
                             Id = 29,
+                            CardColumnId = 21,
                             Description = "some description for second column card5",
                             DueDate = new DateTime(2024, 4, 10, 2, 13, 2, 0, DateTimeKind.Utc),
                             Name = "second column card5"
