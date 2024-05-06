@@ -1,15 +1,24 @@
 using First_App.Server.DataAccess.Data;
 using First_App.Server.DataAccess.Interfaces;
 using First_App.Server.DataAccess.Repositories;
+using First_App.Server.DataTransferObjects.Requests;
 using First_App.Server.Extensions;
+using First_App.Server.Validators;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services
+    .AddControllers()
+    .AddFluentValidation(x =>
+    {
+        x.ImplicitlyValidateChildProperties = true;
+        x.RegisterValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+    });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
