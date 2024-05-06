@@ -5,11 +5,13 @@ namespace First_App.Server.Entities
     public class Card : BaseEntity
     {
         [Column("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
         [Column("description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
         [Column("due_date")]
-        public DateTime DueDate { get; set; }
+        public DateTime? DueDate { get; set; }
+        [ForeignKey("card_column_id")]
+        public int? CardColumnId { get; set; }
         public CardColumn CardColumn { get; set; }
     }
 }

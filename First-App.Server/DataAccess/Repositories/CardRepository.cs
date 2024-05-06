@@ -30,7 +30,7 @@ namespace First_App.Server.DataAccess.Repositories
 
         public async Task<Card> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await dbSet.FindAsync(id);
         }
 
         public async Task UpdateAsync(Card entity)

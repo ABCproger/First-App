@@ -30,7 +30,6 @@
 
   <ItemGroup>
     <Folder Include="DataTransferObjects\Responces\" />
-    <Folder Include="DataTransferObjects\Requests\" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,7 @@
-﻿using First_App.Server.DataAccess.Interfaces;
+﻿using AutoMapper;
+using First_App.Server.DataAccess.Interfaces;
+using First_App.Server.DataTransferObjects.Requests;
+using First_App.Server.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,14 +12,18 @@ namespace First_App.Server.Controllers
     public class CardsController : ControllerBase
     {
         private readonly ICardRepository _cardRepository;
-        public CardsController (ICardRepository cardRepository)
+        private readonly IMapper _mapper;
+        public CardsController (ICardRepository cardRepository, IMapper mapper)
         {
             _cardRepository = cardRepository;
+            _mapper = mapper;
         }
         [HttpPost]
-        public async Task<IActionResult> AddCard()
+        public async Task<IActionResult> AddCard([FromBody] AddCardRequest request)
         {
-            return Ok();
+            var card = _mapper.Map<Card>(request);
+            await _cardRepository.AddAsync(card);
+            return Ok(request);
         }
         [HttpGet]
         public async Task<IActionResult> GetCards()
@@ -27,7 +34,9 @@ namespace First_App.Server.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCard(int id)
         {
-            return Ok();
+            var card = await _cardRepository.GetByIdAsync(id);
+            var returnCard = _mapper.Map<GetCardRequest>(card);
+            return Ok(returnCard);
         }
         [HttpPatch("{id}")]
         public async Task<IActionResult> EditCard(int id)

@@ -32,7 +32,6 @@ namespace First_App.Server.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("name");
 
@@ -50,20 +49,18 @@ namespace First_App.Server.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CardColumnId")
+                    b.Property<int?>("CardColumnId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("description");
 
-                    b.Property<DateTime>("DueDate")
+                    b.Property<DateTime?>("DueDate")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("due_date");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("name");
 
@@ -83,11 +80,10 @@ namespace First_App.Server.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("BoardId")
+                    b.Property<int>("BoardId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("name");
 
@@ -102,18 +98,20 @@ namespace First_App.Server.Migrations
                 {
                     b.HasOne("First_App.Server.Entities.CardColumn", "CardColumn")
                         .WithMany("Cards")
-                        .HasForeignKey("CardColumnId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CardColumnId");
 
                     b.Navigation("CardColumn");
                 });
 
             modelBuilder.Entity("First_App.Server.Entities.CardColumn", b =>
                 {
-                    b.HasOne("First_App.Server.Entities.Board", null)
+                    b.HasOne("First_App.Server.Entities.Board", "Boards")
                         .WithMany("Columns")
-                        .HasForeignKey("BoardId");
+                        .HasForeignKey("BoardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Boards");
                 });
 
             modelBuilder.Entity("First_App.Server.Entities.Board", b =>
