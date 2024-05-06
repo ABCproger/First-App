@@ -20,7 +20,12 @@ namespace First_App.Server.DataAccess.Repositories
 
         public async Task DeleteByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var entity = await dbSet.FindAsync(id);
+            if(entity != null)
+            {
+                dbSet.Remove(entity);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task<IEnumerable<Card>> GetAllAsync()
@@ -30,12 +35,30 @@ namespace First_App.Server.DataAccess.Repositories
 
         public async Task<Card> GetByIdAsync(int id)
         {
-            return await dbSet.FindAsync(id);
+            var entity = await dbSet.FindAsync(id);
+            if(entity == null)
+            {
+                throw new ArgumentNullException($"Card with ID {entity.Id} not found");
+            }
+            return entity;
         }
 
         public async Task UpdateAsync(Card entity)
         {
-            throw new NotImplementedException();
+            if(entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+            var result = await dbSet.FindAsync(entity.Id);
+            if(result == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+            result.Name = entity.Name;
+            result.Description = entity.Description;
+            result.DueDate = entity.DueDate;
+            result.CardColumnId = entity.CardColumnId;
+            await _context.SaveChangesAsync();
         }
     }
 }

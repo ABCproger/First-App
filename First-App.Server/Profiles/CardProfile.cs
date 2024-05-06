@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using First_App.Server.DataTransferObjects.Requests;
+using First_App.Server.DataTransferObjects.Responces;
 using First_App.Server.Entities;
 
 namespace First_App.Server.Profiles
@@ -8,7 +9,7 @@ namespace First_App.Server.Profiles
     {
         public CardProfile()
         {
-            CreateMap<Card, GetCardRequest>()
+            CreateMap<Card, GetCardResponse>()
                 .ForMember(dest => dest.Name,
                 src => src.MapFrom(x => x.Name))
                 .ForMember(dest => dest.Description,
@@ -16,13 +17,37 @@ namespace First_App.Server.Profiles
                 .ForMember(dest => dest.DueDate,
                 src => src.MapFrom(x => x.DueDate));
 
-            CreateMap<AddCardRequest,Card>()
+            CreateMap<AddCardRequest, Card>()
                 .ForMember(dest => dest.Name,
                 src => src.MapFrom(x => x.Name))
                 .ForMember(dest => dest.Description,
                 src => src.MapFrom(x => x.Description))
                 .ForMember(dest => dest.DueDate,
-                src => src.MapFrom(x => x.DueDate));
+                src => src.MapFrom(x => x.DueDate))
+                .ForMember(dest => dest.CardColumnId,
+                src => src.MapFrom(x => x.CardColumnId));
+
+            CreateMap<EditCardRequest, Card>()
+                .ForMember(dest => dest.Name,
+                src => src.MapFrom(x => x.Name))
+                .ForMember(dest => dest.Description,
+                src => src.MapFrom(x => x.Description))
+                .ForMember(dest => dest.DueDate,
+                src => src.MapFrom(x => x.DueDate))
+                .ForMember(dest => dest.CardColumnId,
+                src => src.MapFrom(x => x.CardColumnId));
+
+            CreateMap<Card,EditCardResponse>()
+                .ForMember(dest => dest.Id,
+                src => src.MapFrom(x => x.Id))
+                .ForMember(dest => dest.Name,
+                src => src.MapFrom(x => x.Name))
+                .ForMember(dest => dest.Description,
+                src => src.MapFrom(x => x.Description))
+                .ForMember(dest => dest.DueDate,
+                src => src.MapFrom(x => x.DueDate))
+                .ForMember(dest => dest.CardColumnId,
+                src => src.MapFrom(x => x.CardColumnId));
 
         }
     }
