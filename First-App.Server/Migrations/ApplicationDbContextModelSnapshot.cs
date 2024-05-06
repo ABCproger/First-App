@@ -38,6 +38,18 @@ namespace First_App.Server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Boards");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 20,
+                            Name = "testBoard"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Name = "secondTestBoard"
+                        });
                 });
 
             modelBuilder.Entity("First_App.Server.Entities.Card", b =>
@@ -57,7 +69,7 @@ namespace First_App.Server.Migrations
                         .HasColumnName("description");
 
                     b.Property<DateTime?>("DueDate")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("due_date");
 
                     b.Property<string>("Name")
@@ -69,6 +81,78 @@ namespace First_App.Server.Migrations
                     b.HasIndex("CardColumnId");
 
                     b.ToTable("cards");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 20,
+                            Description = "some description for first card",
+                            DueDate = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            Name = "first card"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Description = "some description for second card",
+                            DueDate = new DateTime(2025, 4, 12, 4, 13, 2, 0, DateTimeKind.Utc),
+                            Name = "second card"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Description = "some description for third card",
+                            DueDate = new DateTime(2024, 4, 3, 2, 13, 2, 0, DateTimeKind.Utc),
+                            Name = "third card"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Description = "some description for fourth card",
+                            DueDate = new DateTime(2024, 1, 12, 12, 13, 2, 0, DateTimeKind.Utc),
+                            Name = "fourth card"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Description = "some description for fifth card",
+                            DueDate = new DateTime(2024, 4, 2, 2, 13, 2, 0, DateTimeKind.Utc),
+                            Name = "fifth card"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Description = "some description second column card",
+                            DueDate = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            Name = "second column card"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Description = "some description second column card2",
+                            DueDate = new DateTime(2024, 4, 8, 2, 13, 2, 0, DateTimeKind.Utc),
+                            Name = "second column card2"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Description = "some description second column card3",
+                            DueDate = new DateTime(2024, 4, 9, 2, 13, 2, 0, DateTimeKind.Utc),
+                            Name = "second column card3"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Description = "some description for second column card4",
+                            DueDate = new DateTime(2024, 4, 11, 2, 13, 2, 0, DateTimeKind.Utc),
+                            Name = "second column card4"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Description = "some description for second column card5",
+                            DueDate = new DateTime(2024, 4, 10, 2, 13, 2, 0, DateTimeKind.Utc),
+                            Name = "second column card5"
+                        });
                 });
 
             modelBuilder.Entity("First_App.Server.Entities.CardColumn", b =>
@@ -92,6 +176,20 @@ namespace First_App.Server.Migrations
                     b.HasIndex("BoardId");
 
                     b.ToTable("CardColumns");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 20,
+                            BoardId = 20,
+                            Name = "first column"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            BoardId = 20,
+                            Name = "second column"
+                        });
                 });
 
             modelBuilder.Entity("First_App.Server.Entities.Card", b =>
