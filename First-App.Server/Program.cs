@@ -3,6 +3,7 @@ using First_App.Server.DataAccess.Interfaces;
 using First_App.Server.DataAccess.Repositories;
 using First_App.Server.DataTransferObjects.Requests;
 using First_App.Server.Extensions;
+using First_App.Server.Middleware;
 using First_App.Server.Validators;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -42,6 +43,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseMiddleware<GlobalErrorHandlingMiddleware>();
 
 app.MapControllers();
 
