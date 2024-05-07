@@ -14,6 +14,7 @@ namespace First_App.Server.Controllers
     {
         private readonly ICardRepository _cardRepository;
         private readonly IMapper _mapper;
+        private readonly ICardActivityLogsRepository _cardActivityLogsRepository;
         public CardsController (ICardRepository cardRepository, IMapper mapper)
         {
             _cardRepository = cardRepository;
@@ -51,7 +52,7 @@ namespace First_App.Server.Controllers
         [HttpPatch("{id}")]
         public async Task<IActionResult> EditCard(int id, [FromBody]EditCardRequest request)
         {
-            if(request == null)
+            if(request == null|| id <= 0)
             {
                 return BadRequest();
             }

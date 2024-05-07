@@ -15,6 +15,7 @@ namespace First_App.Server.DataAccess.Data
         public DbSet<Board> Boards { get; set; }
         public DbSet<CardColumn> CardColumns { get; set; }
         public DbSet<Card> cards { get; set; }
+        public DbSet<CardActivityLog> CardActivityLogs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

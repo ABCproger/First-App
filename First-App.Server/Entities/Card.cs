@@ -13,5 +13,6 @@ namespace First_App.Server.Entities
         [ForeignKey("card_column_id")]
         public int? CardColumnId { get; set; }
         public CardColumn CardColumn { get; set; }
+        public IQueryable<CardActivityLog> CardActivityLogs { get; set; }
     }
 }
