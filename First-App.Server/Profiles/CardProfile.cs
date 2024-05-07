@@ -40,8 +40,6 @@ namespace First_App.Server.Profiles
                 src => src.MapFrom(x => x.CardColumnId));
 
             CreateMap<Card,EditCardResponse>()
-                .ForMember(dest => dest.Id,
-                src => src.MapFrom(x => x.Id))
                 .ForMember(dest => dest.Name,
                 src => src.MapFrom(x => x.Name))
                 .ForMember(dest => dest.Description,

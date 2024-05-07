@@ -8,7 +8,7 @@ namespace First_App.Server.DataAccess.Repositories
     public class CardColumnRepository : AbstractRepository, ICardColumnRepository
     {
         private readonly DbSet<CardColumn> dbSet;
-        protected CardColumnRepository(ApplicationDbContext context) : base(context)
+        public CardColumnRepository(ApplicationDbContext context) : base(context)
         {
             dbSet = context.Set<CardColumn>();
         }
@@ -61,4 +61,4 @@ namespace First_App.Server.DataAccess.Repositories
         }
     }
 }
-}
+
