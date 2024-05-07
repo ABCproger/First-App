@@ -21,7 +21,7 @@ namespace First_App.Server.Controllers
             _mapper = mapper;
         }
         [HttpPost]
-        public async Task<IActionResult> AddCard([FromBody] AddCardColumnRequest request)
+        public async Task<IActionResult> AddCardColumn([FromBody] AddCardColumnRequest request)
         {
             if (request == null)
             {
@@ -32,14 +32,14 @@ namespace First_App.Server.Controllers
             return Ok(request);
         }
         [HttpGet]
-        public async Task<IActionResult> GetCards()
+        public async Task<IActionResult> GetCardColumns()
         {
             var cards = await _cardColumnRepository.GetAllAsync();
             var response = _mapper.Map<IEnumerable<GetCardColumnResponse>>(cards);
             return Ok(response);
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetCard(int id)
+        public async Task<IActionResult> GetCardColumn(int id)
         {
             var card = await _cardColumnRepository.GetByIdAsync(id);
             if (card == null)
@@ -50,7 +50,7 @@ namespace First_App.Server.Controllers
             return Ok(returnCard);
         }
         [HttpPatch("{id}")]
-        public async Task<IActionResult> EditCard(int id, [FromBody] EditCardColumnRequest request)
+        public async Task<IActionResult> EditCardColumn(int id, [FromBody] EditCardColumnRequest request)
         {
             if (request == null)
             {
@@ -63,7 +63,7 @@ namespace First_App.Server.Controllers
             return Ok(response);
         }
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCard(int id)
+        public async Task<IActionResult> DeleteCardColumn(int id)
         {
             var card = await _cardColumnRepository.GetByIdAsync(id);
             if (card == null)
