@@ -64,9 +64,13 @@ namespace First_App.Server.Controllers
             }
             var updatedCard = _mapper.Map<Card>(request);
             updatedCard.Id = id;
-            await _cardRepository.UpdateAsync(updatedCard);
-            var response = _mapper.Map<EditCardResponse>(updatedCard);
-            return Ok(response);
+            var result = await _cardRepository.UpdateAsync(updatedCard);
+            if (result == true)
+            {
+                var response = _mapper.Map<EditCardResponse>(updatedCard);
+                return Ok(response);
+            }
+            return NotFound();
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCard(int id)
@@ -76,8 +80,12 @@ namespace First_App.Server.Controllers
             {
                 return NotFound();
             }
-            await _cardRepository.DeleteByIdAsync(id);
-            return NoContent();
+            var result = await _cardRepository.DeleteByIdAsync(id);
+            if (result == true)
+            {
+                return NoContent();
+            }
+            return NotFound();
         }
     }
 }

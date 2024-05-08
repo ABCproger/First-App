@@ -17,7 +17,7 @@ namespace First_App.Server.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public Task DeleteByIdAsync(int id)
+        public Task<bool> DeleteByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
@@ -30,14 +30,10 @@ namespace First_App.Server.DataAccess.Repositories
         public async Task<Priority> GetByIdAsync(int id)
         {
             var entity = await dbSet.FindAsync(id);
-            if (entity == null)
-            {
-                throw new ArgumentNullException($"Card with ID {entity.Id} not found");
-            }
             return entity;
         }
 
-        public Task UpdateAsync(Priority entity)
+        public Task<bool> UpdateAsync(Priority entity)
         {
             throw new NotImplementedException();
         }

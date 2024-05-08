@@ -18,14 +18,16 @@ namespace First_App.Server.DataAccess.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteByIdAsync(int id)
+        public async Task<bool> DeleteByIdAsync(int id)
         {
             var entity = await dbSet.FindAsync(id);
             if(entity != null)
             {
                 dbSet.Remove(entity);
                 await _context.SaveChangesAsync();
+                return true;
             }
+            return false;
         }
 
         public async Task<IEnumerable<Card>> GetAllAsync()
@@ -36,29 +38,27 @@ namespace First_App.Server.DataAccess.Repositories
         public async Task<Card> GetByIdAsync(int id)
         {
             var entity = await dbSet.FindAsync(id);
-            if(entity == null)
-            {
-                throw new ArgumentNullException($"Card with ID {entity.Id} not found");
-            }
             return entity;
         }
 
-        public async Task UpdateAsync(Card entity)
+        public async Task<bool> UpdateAsync(Card entity)
         {
             if(entity == null)
             {
                 throw new ArgumentNullException(nameof(entity));
             }
             var result = await dbSet.FindAsync(entity.Id);
-            if(result == null)
+            if(result != null)
             {
-                throw new ArgumentNullException(nameof(entity));
+                result.Name = entity.Name;
+                result.Description = entity.Description;
+                result.DueDate = entity.DueDate;
+                result.CardColumnId = entity.CardColumnId;
+                await _context.SaveChangesAsync();
+                return true;
             }
-            result.Name = entity.Name;
-            result.Description = entity.Description;
-            result.DueDate = entity.DueDate;
-            result.CardColumnId = entity.CardColumnId;
-            await _context.SaveChangesAsync();
+            return false;
+            
         }
     }
 }

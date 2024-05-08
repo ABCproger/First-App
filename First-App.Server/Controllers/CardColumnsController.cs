@@ -56,11 +56,20 @@ namespace First_App.Server.Controllers
             {
                 return BadRequest();
             }
+            var cardColumn = _cardColumnRepository.GetByIdAsync(id);
+            if (cardColumn == null)
+            {
+                return NotFound();
+            }
             var updatedCard = _mapper.Map<CardColumn>(request);
             updatedCard.Id = id;
-            await _cardColumnRepository.UpdateAsync(updatedCard);
-            var response = _mapper.Map<EditCardColumnResponse>(updatedCard);
-            return Ok(response);
+            var result = await _cardColumnRepository.UpdateAsync(updatedCard);
+            if(result == true)
+            {
+                var response = _mapper.Map<EditCardColumnResponse>(updatedCard);
+                return Ok(response);
+            }
+            return NotFound();
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCardColumn(int id)
@@ -70,8 +79,12 @@ namespace First_App.Server.Controllers
             {
                 return NotFound();
             }
-            await _cardColumnRepository.DeleteByIdAsync(id);
-            return NoContent();
+            var result = await _cardColumnRepository.DeleteByIdAsync(id);
+            if (result == true)
+            {
+                return NoContent();
+            }
+            return NotFound();
         }
     }
 }

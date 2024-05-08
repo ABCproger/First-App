@@ -7,7 +7,7 @@ namespace First_App.Server.DataAccess.Interfaces
         Task<IEnumerable<TEntity>> GetAllAsync();
         Task<TEntity> GetByIdAsync(int id);
         Task AddAsync(TEntity entity);
-        Task UpdateAsync(TEntity entity);
-        Task DeleteByIdAsync(int id);
+        Task<bool> UpdateAsync(TEntity entity);
+        Task<bool> DeleteByIdAsync(int id);
     }
 }
