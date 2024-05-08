@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './new-list.component.css'
 })
 export class NewListComponent {
-
+  status: boolean = true;
+  clickEvent() {
+    this.status = !this.status;
+  }
 }

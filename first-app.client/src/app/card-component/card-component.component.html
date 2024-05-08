@@ -1,1 +1,51 @@
-<p>card-component works!</p>
+<div #cardBody class="border border-neutral-300 rounded-md p-2 w-64 my-3 relative" (click)="modalClickEvent(); $event.stopPropagation()">
+    <div class="flex justify-between items-center">
+        <h2 class="font-medium">Card Name</h2>
+        <button #moreButton class="material-symbols-outlined ms-1 edit-vert hover:bg-stone-200" (click)="clickEvent(); $event.stopPropagation()">
+            more_vert
+        </button>
+    </div>
+
+
+    <div class="edit-button border-2 border-neutral-300 rounded-md bg-white p-2" [ngClass]="status ? 'show' : 'hide'">
+        <button class="hover:bg-stone-200 transition  ease-in-out duration-100 p-1 pe-10 rounded-md">
+            <span class="material-symbols-outlined me-2">edit</span>
+            <span>Edit</span>
+        </button>
+        <button class="hover:bg-stone-200 transition  ease-in-out duration-100 p-1 pe-10 rounded-md text-red-600">
+            <span class="material-symbols-outlined me-2">delete</span>
+            <span>Delete</span>
+        </button>
+    </div>
+
+
+    <div class="flex justify-start my-2">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore eaque cumque et mollitia saepe magnam.
+    </div>
+    <div class="flex justify-start items-center">
+        <span class="material-symbols-outlined pe-1">calendar_month</span>
+        <span>Wed,19, Apr</span>
+    </div>
+    <div class="">
+        <div class=" rounded-lg w-fit my-2 bg-stone-100">
+            <span class="px-4 py-2">Medium</span>
+        </div>
+    </div>
+    <div class="dropdown">
+        <div class="border rounded my-2 bg-neutral-200 flex items-center justify-between p-1">
+            <span class="">Move to:</span>
+            <span class="material-symbols-outlined">expand_more</span>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div [ngClass]="modalStatus ? 'modal-window' : 'd-none'"  >
+    
+    <div class="modal-content" #modalWindow>
+
+    </div>
+
+</div>
