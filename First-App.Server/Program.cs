@@ -4,6 +4,8 @@ using First_App.Server.DataAccess.Repositories;
 using First_App.Server.DataTransferObjects.Requests;
 using First_App.Server.Extensions;
 using First_App.Server.Middleware;
+using First_App.Server.Observers;
+using First_App.Server.Observers.Interfaces;
 using First_App.Server.Validators;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -31,7 +33,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<ICardRepository, CardRepository>();
 builder.Services.AddScoped<ICardColumnRepository, CardColumnRepository>();
 builder.Services.AddScoped<ICardActivityLogsRepository, CardActivityLogsRepository>();
-
+builder.Services.AddScoped<ICardActivity,CardActivity>();
+//builder.Services.AddScoped<IObserver, CreateCardObserver>();
+//builder.Services.AddScoped<IObserver, EditCardObserver>();
+//builder.Services.AddScoped<IObserver,DeleteCardObserver>();
+//builder.Services.AddScoped<IObserver, MoveCardObserver>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -2,11 +2,11 @@
 
 namespace First_App.Server.Observers
 {
-    public class DeleteCardObserver : IObserver
-    {
-        public Task Update(ICardActivity activity)
-        {
-            throw new NotImplementedException();
-        }
-    }
+    //public class DeleteCardObserver : IObserver
+    //{
+    //    public Task UpdateAsync(ICardActivity activity)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
 }

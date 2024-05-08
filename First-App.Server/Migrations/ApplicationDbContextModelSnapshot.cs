@@ -76,9 +76,14 @@ namespace First_App.Server.Migrations
                         .HasColumnType("text")
                         .HasColumnName("name");
 
+                    b.Property<int?>("PriorityId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CardColumnId");
+
+                    b.HasIndex("PriorityId");
 
                     b.ToTable("cards");
 
@@ -165,6 +170,31 @@ namespace First_App.Server.Migrations
                         });
                 });
 
+            modelBuilder.Entity("First_App.Server.Entities.CardActivityLog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Action")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("ActivityTime")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("CardId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CardId");
+
+                    b.ToTable("CardActivityLogs");
+                });
+
             modelBuilder.Entity("First_App.Server.Entities.CardColumn", b =>
                 {
                     b.Property<int>("Id")
@@ -202,13 +232,48 @@ namespace First_App.Server.Migrations
                         });
                 });
 
+            modelBuilder.Entity("First_App.Server.Entities.Priority", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Priority");
+                });
+
             modelBuilder.Entity("First_App.Server.Entities.Card", b =>
                 {
                     b.HasOne("First_App.Server.Entities.CardColumn", "CardColumn")
                         .WithMany("Cards")
                         .HasForeignKey("CardColumnId");
 
+                    b.HasOne("First_App.Server.Entities.Priority", "Priority")
+                        .WithMany("Cards")
+                        .HasForeignKey("PriorityId");
+
                     b.Navigation("CardColumn");
+
+                    b.Navigation("Priority");
+                });
+
+            modelBuilder.Entity("First_App.Server.Entities.CardActivityLog", b =>
+                {
+                    b.HasOne("First_App.Server.Entities.Card", "Card")
+                        .WithMany("CardActivityLogs")
+                        .HasForeignKey("CardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Card");
                 });
 
             modelBuilder.Entity("First_App.Server.Entities.CardColumn", b =>
@@ -227,7 +292,17 @@ namespace First_App.Server.Migrations
                     b.Navigation("Columns");
                 });
 
+            modelBuilder.Entity("First_App.Server.Entities.Card", b =>
+                {
+                    b.Navigation("CardActivityLogs");
+                });
+
             modelBuilder.Entity("First_App.Server.Entities.CardColumn", b =>
+                {
+                    b.Navigation("Cards");
+                });
+
+            modelBuilder.Entity("First_App.Server.Entities.Priority", b =>
                 {
                     b.Navigation("Cards");
                 });

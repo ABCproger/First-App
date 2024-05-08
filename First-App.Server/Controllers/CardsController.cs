@@ -3,6 +3,8 @@ using First_App.Server.DataAccess.Interfaces;
 using First_App.Server.DataTransferObjects.Requests;
 using First_App.Server.DataTransferObjects.Responces;
 using First_App.Server.Entities;
+using First_App.Server.Observers;
+using First_App.Server.Observers.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,14 +16,16 @@ namespace First_App.Server.Controllers
     {
         private readonly ICardRepository _cardRepository;
         private readonly IMapper _mapper;
-        private readonly ICardActivityLogsRepository _cardActivityLogsRepository;
-        public CardsController (ICardRepository cardRepository, IMapper mapper)
+        private readonly ICardActivity _cardActivity;
+        
+        public CardsController (ICardRepository cardRepository, IMapper mapper, ICardActivity cardActivity)
         {
             _cardRepository = cardRepository;
             _mapper = mapper;
+            _cardActivity = cardActivity;
         }
         [HttpPost]
-        public async Task<IActionResult> AddCard([FromBody] AddCardRequest request)
+        public async Task<IActionResult> AddCard([FromBody] AddCardRequest request, [FromServices] IObserver observer)
         {
             if(request == null)
             {
@@ -29,6 +33,8 @@ namespace First_App.Server.Controllers
             }
             var card = _mapper.Map<Card>(request);
             await _cardRepository.AddAsync(card);
+            await _cardActivity.AttachAsync(observer);
+            await _cardActivity.NotifyAsync("smth", card.Name);
             return Ok(request);
         }
         [HttpGet]
