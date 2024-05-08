@@ -8,5 +8,6 @@ namespace First_App.Server.DataAccess.Data.InitDataFactory
         public abstract Card[] GetCardData();
         public abstract CardColumn[] GetCardColumnData();
         public abstract Priority[] GetPriorityData();
+        public abstract CardActivityLog[] GetActivityLogData();
     }
 }

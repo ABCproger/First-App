@@ -4,6 +4,195 @@ namespace First_App.Server.DataAccess.Data.InitDataFactory
 {
     public class TestDataFactory : AbstractDataFactory
     {
+        public override CardActivityLog[] GetActivityLogData()
+        {
+            return new[]
+            {
+                new CardActivityLog
+                {
+                    Id = 100,
+                    Action = "You created this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 20,
+                },
+                new CardActivityLog
+                {
+                    Id =  101,
+                    Action = "You created this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 21,
+                },
+                new CardActivityLog
+                {
+                    Id = 102,
+                    Action = "You created this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 22,
+                },
+                new CardActivityLog
+                {
+                    Id = 103,
+                    Action = "You created this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 23,
+                },
+                new CardActivityLog
+                {
+                    Id = 104,
+                    Action = "You created this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 24,
+                },
+                new CardActivityLog
+                {
+                    Id = 105,
+                    Action = "You created this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 25,
+                },
+                new CardActivityLog
+                {
+                    Id = 106,
+                    Action = "You created this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 26,
+                },
+                new CardActivityLog
+                {
+                    Id = 107,
+                    Action = "You created this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 27,
+                },
+                new CardActivityLog
+                {
+                    Id = 108,
+                    Action = "You created this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 28,
+                },
+                new CardActivityLog
+                {
+                    Id = 109,
+                    Action = "You created this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 29,
+                },
+                new CardActivityLog
+                {
+                    Id = 110,
+                    Action = "You renamed first card to first card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 20,
+                },
+                new CardActivityLog
+                {
+                    Id = 111,
+                    Action = "You moved second card from To Do to Planned",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 21,
+                },
+                new CardActivityLog
+                {
+                    Id = 112,
+                    Action = "You deleted third card from to do",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 22,
+                },
+                new CardActivityLog
+                {
+                    Id = 113,
+                    Action = "You changed the priority fourth card from low to medium",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 23,
+                },
+                new CardActivityLog
+                {
+                    Id = 114,
+                    Action = "You do something with this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 24,
+                },
+                new CardActivityLog
+                {
+                    Id = 115,
+                    Action = "You do something with this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 25,
+                },
+                new CardActivityLog
+                {
+                    Id = 116,
+                    Action = "You do something with this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 26,
+                },
+                new CardActivityLog
+                {
+                    Id = 117,
+                    Action = "You do something with this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 27,
+                },
+                new CardActivityLog
+                {
+                    Id = 118,
+                    Action = "You do something with this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 28,
+                },
+                new CardActivityLog
+                {
+                    Id = 119,
+                    Action = "You do something with this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 29,
+                },
+                new CardActivityLog
+                {
+                    Id = 120,
+                    Action = "You do something with this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 20,
+                },
+                new CardActivityLog
+                {
+                    Id = 121,
+                    Action = "You do something with this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 21,
+                },
+                new CardActivityLog
+                {
+                    Id = 122,
+                    Action = "You do something with this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 22,
+                },
+                new CardActivityLog
+                {
+                    Id = 123,
+                    Action = "You do something with this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 23,
+                },
+                new CardActivityLog
+                {
+                    Id = 124,
+                    Action = "You do something with this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 24,
+                },
+                new CardActivityLog
+                {
+                    Id = 125,
+                    Action = "You do something with this card",
+                    ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, DateTimeKind.Utc),
+                    CardId = 25,
+                },
+            };
+        }
+
         public override Board[] GetBoardData()
         {
             return new[]

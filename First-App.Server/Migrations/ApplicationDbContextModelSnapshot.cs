@@ -203,6 +203,190 @@ namespace First_App.Server.Migrations
                     b.HasIndex("CardId");
 
                     b.ToTable("CardActivityLogs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 100,
+                            Action = "You created this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 20
+                        },
+                        new
+                        {
+                            Id = 101,
+                            Action = "You created this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 21
+                        },
+                        new
+                        {
+                            Id = 102,
+                            Action = "You created this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 22
+                        },
+                        new
+                        {
+                            Id = 103,
+                            Action = "You created this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 23
+                        },
+                        new
+                        {
+                            Id = 104,
+                            Action = "You created this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 24
+                        },
+                        new
+                        {
+                            Id = 105,
+                            Action = "You created this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 25
+                        },
+                        new
+                        {
+                            Id = 106,
+                            Action = "You created this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 26
+                        },
+                        new
+                        {
+                            Id = 107,
+                            Action = "You created this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 27
+                        },
+                        new
+                        {
+                            Id = 108,
+                            Action = "You created this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 28
+                        },
+                        new
+                        {
+                            Id = 109,
+                            Action = "You created this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 29
+                        },
+                        new
+                        {
+                            Id = 110,
+                            Action = "You renamed first card to first card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 20
+                        },
+                        new
+                        {
+                            Id = 111,
+                            Action = "You moved second card from To Do to Planned",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 21
+                        },
+                        new
+                        {
+                            Id = 112,
+                            Action = "You deleted third card from to do",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 22
+                        },
+                        new
+                        {
+                            Id = 113,
+                            Action = "You changed the priority fourth card from low to medium",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 23
+                        },
+                        new
+                        {
+                            Id = 114,
+                            Action = "You do something with this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 24
+                        },
+                        new
+                        {
+                            Id = 115,
+                            Action = "You do something with this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 25
+                        },
+                        new
+                        {
+                            Id = 116,
+                            Action = "You do something with this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 26
+                        },
+                        new
+                        {
+                            Id = 117,
+                            Action = "You do something with this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 27
+                        },
+                        new
+                        {
+                            Id = 118,
+                            Action = "You do something with this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 28
+                        },
+                        new
+                        {
+                            Id = 119,
+                            Action = "You do something with this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 29
+                        },
+                        new
+                        {
+                            Id = 120,
+                            Action = "You do something with this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 20
+                        },
+                        new
+                        {
+                            Id = 121,
+                            Action = "You do something with this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 21
+                        },
+                        new
+                        {
+                            Id = 122,
+                            Action = "You do something with this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 22
+                        },
+                        new
+                        {
+                            Id = 123,
+                            Action = "You do something with this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 23
+                        },
+                        new
+                        {
+                            Id = 124,
+                            Action = "You do something with this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 24
+                        },
+                        new
+                        {
+                            Id = 125,
+                            Action = "You do something with this card",
+                            ActivityTime = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
+                            CardId = 25
+                        });
                 });
 
             modelBuilder.Entity("First_App.Server.Entities.CardColumn", b =>

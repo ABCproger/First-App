@@ -9,5 +9,6 @@ namespace First_App.Server.DataAccess.Interfaces
     {
         Task AddAsync(CardActivityLog entity);
         Task<PagedList<GetCardActivityResponse>> GetCardActivitiesAsync(int cardId, int page, int pageSize);
+        Task<PagedList<GetCardActivityResponse>> GetCardActivitiesHistoryAsync(int page, int pagesize);
     }
 }

@@ -32,6 +32,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped<ICardRepository, CardRepository>();
 builder.Services.AddScoped<ICardColumnRepository, CardColumnRepository>();
+builder.Services.AddScoped<IPriorityRepository, PriorityRepository>();
+
 builder.Services.AddScoped<ICardActivityLogsRepository, CardActivityLogsRepository>();
 builder.Services.AddScoped<ICardActivity,CardActivity>();
 builder.Services.AddScoped<ICreateCardObserver, CreateCardObserver>();

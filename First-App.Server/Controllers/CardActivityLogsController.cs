@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using First_App.Server.DataAccess.Interfaces;
 using First_App.Server.DataTransferObjects.Responces;
+using First_App.Server.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,6 +24,16 @@ namespace First_App.Server.Controllers
         {
             var activity = await _cardActivityLogsRepository.GetCardActivitiesAsync(cardId, page, pageSize);
             if(activity == null)
+            {
+                return NotFound();
+            }
+            return Ok(activity);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetCardsActivity([FromQuery] int page, [FromQuery] int pageSize)
+        {
+            var activity = await _cardActivityLogsRepository.GetCardActivitiesHistoryAsync(page,pageSize);
+            if (activity == null)
             {
                 return NotFound();
             }

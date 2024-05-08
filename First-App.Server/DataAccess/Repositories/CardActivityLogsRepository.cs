@@ -32,5 +32,12 @@ namespace First_App.Server.DataAccess.Repositories
             var response = await PagedList<GetCardActivityResponse>.CreateAsync(mappedQuery, page, pageSize);
             return response;
         }
+        public async Task<PagedList<GetCardActivityResponse>> GetCardActivitiesHistoryAsync(int page, int pagesize)
+        {
+            var query = dbSet.AsQueryable();
+            var mappedQuery = _mapper.ProjectTo<GetCardActivityResponse>(query);
+            var responce = await PagedList<GetCardActivityResponse>.CreateAsync(mappedQuery, page, pagesize);
+            return responce;
+        }
     }
 }
