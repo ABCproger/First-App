@@ -32,6 +32,5 @@ namespace First_App.Server.DataAccess.Repositories
             var response = await PagedList<GetCardActivityResponse>.CreateAsync(mappedQuery, page, pageSize);
             return response;
         }
-
     }
 }

@@ -61,7 +61,7 @@ namespace First_App.Server.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CardColumnId")
+                    b.Property<int>("CardColumnId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Description")
@@ -76,7 +76,7 @@ namespace First_App.Server.Migrations
                         .HasColumnType("text")
                         .HasColumnName("name");
 
-                    b.Property<int?>("PriorityId")
+                    b.Property<int>("PriorityId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -94,7 +94,8 @@ namespace First_App.Server.Migrations
                             CardColumnId = 20,
                             Description = "some description for first card",
                             DueDate = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
-                            Name = "first card"
+                            Name = "first card",
+                            PriorityId = 1
                         },
                         new
                         {
@@ -102,7 +103,8 @@ namespace First_App.Server.Migrations
                             CardColumnId = 20,
                             Description = "some description for second card",
                             DueDate = new DateTime(2025, 4, 12, 4, 13, 2, 0, DateTimeKind.Utc),
-                            Name = "second card"
+                            Name = "second card",
+                            PriorityId = 2
                         },
                         new
                         {
@@ -110,7 +112,8 @@ namespace First_App.Server.Migrations
                             CardColumnId = 20,
                             Description = "some description for third card",
                             DueDate = new DateTime(2024, 4, 3, 2, 13, 2, 0, DateTimeKind.Utc),
-                            Name = "third card"
+                            Name = "third card",
+                            PriorityId = 1
                         },
                         new
                         {
@@ -118,7 +121,8 @@ namespace First_App.Server.Migrations
                             CardColumnId = 20,
                             Description = "some description for fourth card",
                             DueDate = new DateTime(2024, 1, 12, 12, 13, 2, 0, DateTimeKind.Utc),
-                            Name = "fourth card"
+                            Name = "fourth card",
+                            PriorityId = 2
                         },
                         new
                         {
@@ -126,7 +130,8 @@ namespace First_App.Server.Migrations
                             CardColumnId = 20,
                             Description = "some description for fifth card",
                             DueDate = new DateTime(2024, 4, 2, 2, 13, 2, 0, DateTimeKind.Utc),
-                            Name = "fifth card"
+                            Name = "fifth card",
+                            PriorityId = 1
                         },
                         new
                         {
@@ -134,7 +139,8 @@ namespace First_App.Server.Migrations
                             CardColumnId = 21,
                             Description = "some description second column card",
                             DueDate = new DateTime(2024, 4, 12, 2, 13, 2, 0, DateTimeKind.Utc),
-                            Name = "second column card"
+                            Name = "second column card",
+                            PriorityId = 1
                         },
                         new
                         {
@@ -142,7 +148,8 @@ namespace First_App.Server.Migrations
                             CardColumnId = 21,
                             Description = "some description second column card2",
                             DueDate = new DateTime(2024, 4, 8, 2, 13, 2, 0, DateTimeKind.Utc),
-                            Name = "second column card2"
+                            Name = "second column card2",
+                            PriorityId = 3
                         },
                         new
                         {
@@ -150,7 +157,8 @@ namespace First_App.Server.Migrations
                             CardColumnId = 21,
                             Description = "some description second column card3",
                             DueDate = new DateTime(2024, 4, 9, 2, 13, 2, 0, DateTimeKind.Utc),
-                            Name = "second column card3"
+                            Name = "second column card3",
+                            PriorityId = 3
                         },
                         new
                         {
@@ -158,7 +166,8 @@ namespace First_App.Server.Migrations
                             CardColumnId = 21,
                             Description = "some description for second column card4",
                             DueDate = new DateTime(2024, 4, 11, 2, 13, 2, 0, DateTimeKind.Utc),
-                            Name = "second column card4"
+                            Name = "second column card4",
+                            PriorityId = 3
                         },
                         new
                         {
@@ -166,7 +175,8 @@ namespace First_App.Server.Migrations
                             CardColumnId = 21,
                             Description = "some description for second column card5",
                             DueDate = new DateTime(2024, 4, 10, 2, 13, 2, 0, DateTimeKind.Utc),
-                            Name = "second column card5"
+                            Name = "second column card5",
+                            PriorityId = 1
                         });
                 });
 
@@ -248,17 +258,38 @@ namespace First_App.Server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Priority");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Low"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Medium"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "High"
+                        });
                 });
 
             modelBuilder.Entity("First_App.Server.Entities.Card", b =>
                 {
                     b.HasOne("First_App.Server.Entities.CardColumn", "CardColumn")
                         .WithMany("Cards")
-                        .HasForeignKey("CardColumnId");
+                        .HasForeignKey("CardColumnId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("First_App.Server.Entities.Priority", "Priority")
                         .WithMany("Cards")
-                        .HasForeignKey("PriorityId");
+                        .HasForeignKey("PriorityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("CardColumn");
 

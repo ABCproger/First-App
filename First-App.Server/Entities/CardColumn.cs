@@ -8,7 +8,7 @@ namespace First_App.Server.Entities
         public string? Name { get; set; }
         [ForeignKey("board_id")]
         public int BoardId { get; set; }
-        public IQueryable<Card> Cards { get; set;}
+        public ICollection<Card> Cards { get; set;}
         public Board Boards { get; set;}
     }
 }

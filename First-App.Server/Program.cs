@@ -34,10 +34,10 @@ builder.Services.AddScoped<ICardRepository, CardRepository>();
 builder.Services.AddScoped<ICardColumnRepository, CardColumnRepository>();
 builder.Services.AddScoped<ICardActivityLogsRepository, CardActivityLogsRepository>();
 builder.Services.AddScoped<ICardActivity,CardActivity>();
-//builder.Services.AddScoped<IObserver, CreateCardObserver>();
-//builder.Services.AddScoped<IObserver, EditCardObserver>();
-//builder.Services.AddScoped<IObserver,DeleteCardObserver>();
-//builder.Services.AddScoped<IObserver, MoveCardObserver>();
+builder.Services.AddScoped<ICreateCardObserver, CreateCardObserver>();
+builder.Services.AddScoped<IEditCardObserver, EditCardObserver>();
+builder.Services.AddScoped<IDeleteCardObserver,DeleteCardObserver>();
+builder.Services.AddScoped<IMoveCardObserver, MoveCardObserver>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

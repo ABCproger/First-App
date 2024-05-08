@@ -2,6 +2,6 @@
 {
     public interface IObserver
     {
-        Task UpdateAsync(ICardActivity activity, string action, string cardName);
+        Task UpdateAsync(ICardActivity activity, string action, int cardId);
     }
 }

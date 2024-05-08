@@ -4,6 +4,6 @@
     {
         Task AttachAsync(IObserver observer);
         Task DetachAsync(IObserver observer);
-        Task NotifyAsync(string action, string cardName);
+        Task NotifyAsync(string action, int cardId);
     }
 }

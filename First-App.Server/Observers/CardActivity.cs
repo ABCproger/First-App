@@ -17,11 +17,11 @@ namespace First_App.Server.Observers
             return Task.CompletedTask;
         }
 
-        public async Task NotifyAsync(string action, string cardName)
+        public async Task NotifyAsync(string action, int cardId)
         {
             foreach(var observer in _observers)
             {
-                await observer.UpdateAsync(this, action, cardName);
+                await observer.UpdateAsync(this, action, cardId);
             }
         }
     }

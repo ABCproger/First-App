@@ -23,7 +23,7 @@ namespace First_App.Server.DataAccess.Data
             modelBuilder.Entity<Board>().HasData(factory.GetBoardData());
             modelBuilder.Entity<CardColumn>().HasData(factory.GetCardColumnData());
             modelBuilder.Entity<Card>().HasData(factory.GetCardData());
-
+            modelBuilder.Entity<Priority>().HasData(factory.GetPriorityData());
         }
     }
 }

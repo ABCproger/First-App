@@ -11,10 +11,10 @@ namespace First_App.Server.Entities
         [Column("due_date")]
         public DateTime? DueDate { get; set; }
         [ForeignKey("card_column_id")]
-        public int? CardColumnId { get; set; }
-        public int? PriorityId { get; set; }
+        public int CardColumnId { get; set; }
+        public int PriorityId { get; set; }
         public CardColumn CardColumn { get; set; }
         public Priority Priority { get; set; }
-        public IQueryable<CardActivityLog> CardActivityLogs { get; set; }
+        public ICollection<CardActivityLog> CardActivityLogs { get; set; }
     }
 }
