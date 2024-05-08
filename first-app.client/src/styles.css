@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.edit-vert {
+    border-radius: 50%;
+}
+
+.edit-vert:hover {
+    transition: ease-in-out 0.1s;
+}
+
+.show {
+    opacity: 1;
+    visibility: visible;
+}
+.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+.edit-button button{
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    width: 100%;
+}
