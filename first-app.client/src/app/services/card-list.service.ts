@@ -15,6 +15,9 @@ export class CardListService {
   getCardList(id: number): Observable<ApiResponse<ICardList[]>>{
     return this.http.get<ApiResponse<ICardList[]>>(`${this.apiUrl}/${id}`)
   }
+  getCardListCards(cardListId: number): Observable<ApiResponse<any>>{
+    return this.http.get<ApiResponse<any>>(`${this.apiUrl}/${cardListId}/cards`)
+  }
   createCardList(cardList: ICardList): Observable<ApiResponse<ICardList>>{
     return this.http.post<ApiResponse<ICardList>>(`${this.apiUrl}`, cardList);
   }

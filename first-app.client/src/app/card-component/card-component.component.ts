@@ -1,11 +1,12 @@
 import { Component, HostListener, ElementRef, ViewChild } from '@angular/core';
+import { CardService } from '../services/card.service';
 
 @Component({
   selector: 'app-card-component',
   templateUrl: './card-component.component.html',
   styleUrls: ['./card-component.component.css'],
 })
-export class CardComponentComponent {
+export class CardComponentComponent  {
   status: boolean = false;
   modalStatus: boolean = false;
 
@@ -13,7 +14,7 @@ export class CardComponentComponent {
   @ViewChild('modalWindow', { static: false }) modalWindow!: ElementRef;
   @ViewChild('cardBody', { static: false }) cardBody!: ElementRef;
 
-  constructor(private eRef: ElementRef) {}
+  constructor(private eRef: ElementRef, private cardService : CardService) {}
 
   clickEvent() {
     this.status = !this.status;
@@ -33,6 +34,5 @@ export class CardComponentComponent {
       this.status = false;
     }
   }
-
   closeModal() {}
 }

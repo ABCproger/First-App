@@ -5,7 +5,7 @@
             <span class="font-medium p-1 ">To Do</span>
             <span class="flex items-center">
                 <span>45</span>
-                <button class="material-symbols-outlined ms-1 edit-vert hover:bg-stone-200" (click)="clickEvent()">
+                <button class="material-symbols-outlined ms-1 edit-vert hover:bg-stone-200"  (click)="clickEvent()">
                     more_vert
                 </button>
             </span>
@@ -21,7 +21,7 @@
                 </label>
             </div>
         </div>
-        <button class="bg-slate-600 text-white rounded mt-2 px-1 py-2" (click)="clickEvent()">
+        <button class="bg-slate-600 text-white rounded mt-2 px-1 py-2" (click)="fetchCards()">
             Add list
         </button>
         <button class="bg-stone-200 rounded mt-2 px-1 py-2" (click)="editTableName()">
@@ -46,7 +46,7 @@
         <button
             class="btn border-2 border-dashed border-neutral-300 rounded-md flex justify-center items-center w-64 py-2 my-4 hover:bg-neutral-100 ease-in-out duration-100">
             <span class="material-symbols-outlined">add</span>
-            <span class=" mx-2">Add new card</span>
+            <span class=" mx-2 ">Add new card</span>
         </button>
         <app-card-component></app-card-component>
         <app-card-component></app-card-component>

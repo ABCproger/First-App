@@ -41,6 +41,12 @@ namespace First_App.Server.DataAccess.Repositories
             return entity;
         }
 
+        public async Task<IEnumerable<Card>> GetCardColumnCardsAsync(int cardColumnId)
+        {
+            var cards = await dbSet.Where(x => x.CardColumnId == cardColumnId).ToListAsync();
+            return cards;
+        }
+
         public async Task<bool> UpdateAsync(Card entity)
         {
             if(entity == null)

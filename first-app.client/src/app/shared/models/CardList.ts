@@ -7,3 +7,9 @@ export interface ICardList{
     name: string;
     boardId: number;
 }
+export interface ICard{
+    _id?: string;
+    description: string;
+    dueDate:  Date;
+    cardColumnId: number;
+}

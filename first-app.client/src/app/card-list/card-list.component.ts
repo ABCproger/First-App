@@ -1,4 +1,5 @@
 import { Component, HostListener, ElementRef } from '@angular/core';
+import { CardListService } from '../services/card-list.service';
 
 @Component({
   selector: 'app-card-list',
@@ -7,8 +8,9 @@ import { Component, HostListener, ElementRef } from '@angular/core';
 })
 export class CardListComponent {
   status: boolean = true;
+  cards: any = [];
 
-  constructor(private eRef: ElementRef) { }
+  constructor(private eRef: ElementRef, private cardListService : CardListService) { }
 
   editStatus: boolean = false;
   clickEvent() {
@@ -22,7 +24,10 @@ export class CardListComponent {
       this.editStatus = false;
     } 
   }
-
+  fetchCards(){
+    this.cards = this.cardListService.getCardListCards(21)
+    console.log(this.cards);
+  }
   editEvent() {
     this.editStatus = false;
   }

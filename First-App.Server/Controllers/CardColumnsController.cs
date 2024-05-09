@@ -15,10 +15,12 @@ namespace First_App.Server.Controllers
     {
         private readonly ICardColumnRepository _cardColumnRepository;
         private readonly IMapper _mapper;
-        public CardColumnsController(ICardColumnRepository cardColumnRepository, IMapper mapper)
+        private readonly ICardRepository _cardRepository;
+        public CardColumnsController(ICardColumnRepository cardColumnRepository, IMapper mapper, ICardRepository cardRepository)
         {
             _cardColumnRepository = cardColumnRepository;
             _mapper = mapper;
+            _cardRepository = cardRepository;
         }
         [HttpPost]
         public async Task<IActionResult> AddCardColumn([FromBody] AddCardColumnRequest request)
@@ -36,6 +38,17 @@ namespace First_App.Server.Controllers
         {
             var cards = await _cardColumnRepository.GetAllAsync();
             var response = _mapper.Map<IEnumerable<GetCardColumnResponse>>(cards);
+            return Ok(response);
+        }
+        [HttpGet("{cardColumnId}/cards")]
+        public async Task<IActionResult> GetCardColumnCards(int cardColumnId)
+        {
+            var cards = await _cardRepository.GetCardColumnCardsAsync(cardColumnId);
+            if (cards == null)
+            {
+                return NotFound();
+            }
+            var response = _mapper.Map<IEnumerable<GetCardResponse>>(cards);
             return Ok(response);
         }
         [HttpGet("{id}")]
