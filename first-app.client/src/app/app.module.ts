@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CardListComponent } from './card-list/card-list.component';
 import { CardComponentComponent } from './card-component/card-component.component';
 import { NewListComponent } from './new-list/new-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NewListComponent } from './new-list/new-list.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
