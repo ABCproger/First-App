@@ -9,7 +9,7 @@ docker-compose up --build
 ## Installation
 
 For backend setup, see: [Server README](https://github.com/ABCproger/First-App/blob/main/First-App.Server/README.md)  
-For frontend setup, see: [Client README]([url_to_frontend_readme](https://github.com/ABCproger/First-App/tree/main/first-app.client/README.md))
+For frontend setup, see: [Client README](https://github.com/ABCproger/First-App/blob/main/first-app.client/README.md)
 
 ## Navigation
 
