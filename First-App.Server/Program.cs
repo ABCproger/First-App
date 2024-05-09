@@ -41,6 +41,18 @@ builder.Services.AddScoped<ICreateCardObserver, CreateCardObserver>();
 builder.Services.AddScoped<IEditCardObserver, EditCardObserver>();
 builder.Services.AddScoped<IDeleteCardObserver,DeleteCardObserver>();
 builder.Services.AddScoped<IMoveCardObserver, MoveCardObserver>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularOriginPolicy",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:4200")
+                   .AllowAnyHeader()
+                   .AllowAnyMethod()
+                   .AllowCredentials();
+        });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -50,7 +62,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.ApplyMigrations();
 }
-
+app.UseCors("AllowAngularOriginPolicy");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
