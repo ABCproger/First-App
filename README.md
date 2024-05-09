@@ -28,5 +28,5 @@ For frontend setup, see: [Client README](https://github.com/ABCproger/First-App/
 
 ### Branches
 
-- `main`: not updated
+- `main`: latest development version
 - `dev`: latest development version
