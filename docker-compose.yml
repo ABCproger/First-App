@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  first-app.server:
+    image: ${DOCKER_REGISTRY-}firstappserver
+    build:
+      context: .
+      dockerfile: First-App.Server/Dockerfile
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+  first-app.database:
+    image: postgres:latest
+    container_name: first-app.database
+    environment:
+      - POSTGRES_DB=first-app-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./.containers/first-app-db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
