@@ -13,19 +13,27 @@ namespace First_App.Server.DataAccess.Repositories
             dbSet = context.Set<Board>();
         }
 
-        public Task AddAsync(Board entity)
+        public async Task AddAsync(Board entity)
         {
-            throw new NotImplementedException();
+            await dbSet.AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<bool> DeleteByIdAsync(int id)
+        public async Task<bool> DeleteByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var entity = await dbSet.FindAsync(id);
+            if (entity != null)
+            {
+                dbSet.Remove(entity);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            return false;
         }
 
-        public Task<IEnumerable<Board>> GetAllAsync()
+        public async Task<IEnumerable<Board>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await dbSet.ToListAsync();
         }
 
         public async Task<Board> GetByIdAsync(int id)
@@ -34,9 +42,20 @@ namespace First_App.Server.DataAccess.Repositories
             return entity;
         }
 
-        public Task<bool> UpdateAsync(Board entity)
+        public async Task<bool> UpdateAsync(Board entity)
         {
-            throw new NotImplementedException();
+            if(entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+            var result = await dbSet.FindAsync(entity.Id);
+            if(result != null)
+            {
+                result.Name = entity.Name;
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            return false;
         }
     }
 }

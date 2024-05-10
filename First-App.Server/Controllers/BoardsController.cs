@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using First_App.Server.DataAccess.Interfaces;
+using First_App.Server.DataTransferObjects.Requests;
 using First_App.Server.DataTransferObjects.Responces;
+using First_App.Server.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,6 +43,49 @@ namespace First_App.Server.Controllers
             }
             var returnColumns = _mapper.Map<IEnumerable<GetCardColumnResponse>>(columns);
             return Ok(returnColumns);
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddBoard([FromBody] AddBoardRequest request)
+        {
+            if (request == null)
+            {
+                return BadRequest();
+            }
+            var board = _mapper.Map<Board>(request);
+            await _boardRepository.AddAsync(board);
+            return Ok(request);
+        }
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> EditBoard(int id, [FromBody] EditBoardRequest request)
+        {
+            if (request == null || id <= 0)
+            {
+                return BadRequest();
+            }
+            var updatedBoard = _mapper.Map<Board>(request);
+            updatedBoard.Id = id;
+            var result = await _boardRepository.UpdateAsync(updatedBoard);
+            if (result == true)
+            {
+                var response = _mapper.Map<EditBoardResponse>(updatedBoard);
+                return Ok(response);
+            }
+            return NotFound();
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteBoard(int id)
+        {
+            var card = await _boardRepository.GetByIdAsync(id);
+            if (card == null)
+            {
+                return NotFound();
+            }
+            var result = await _boardRepository.DeleteByIdAsync(id);
+            if (result == true)
+            {
+                return NoContent();
+            }
+            return NotFound();
         }
     }
 }

@@ -17,7 +17,9 @@ namespace First_App.Server.Profiles
                 .ForMember(dest => dest.DueDate,
                 src => src.MapFrom(x => x.DueDate))
                 .ForMember(dest => dest.CardColumnId,
-                src => src.MapFrom(x => x.CardColumnId));
+                src => src.MapFrom(x => x.CardColumnId))
+                .ForMember(dest => dest.PriorityId,
+                src => src.MapFrom(x => x.PriorityId));
 
             CreateMap<AddCardRequest, Card>()
                 .ForMember(dest => dest.Name,

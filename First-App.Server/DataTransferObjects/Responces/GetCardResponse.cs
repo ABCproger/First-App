@@ -8,5 +8,6 @@ namespace First_App.Server.DataTransferObjects.Responces
         public string? Description { get; set; }
         public DateTime? DueDate { get; set; }
         public int CardColumnId { get; set; }
+        public int PriorityId { get; set; }
     }
 }
