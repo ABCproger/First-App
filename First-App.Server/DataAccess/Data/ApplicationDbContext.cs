@@ -42,7 +42,7 @@ namespace First_App.Server.DataAccess.Data
             builder.HasMany(b => b.Columns)
                    .WithOne(c => c.Board)
                    .HasForeignKey(c => c.BoardId)
-                   .OnDelete(DeleteBehavior.Cascade);
+                   .OnDelete(DeleteBehavior.Restrict);
         }
 
         private void ConfigureCard(EntityTypeBuilder<Card> builder)
@@ -55,12 +55,12 @@ namespace First_App.Server.DataAccess.Data
             builder.HasOne(c => c.CardColumn)
                    .WithMany(cc => cc.Cards)
                    .HasForeignKey(c => c.CardColumnId)
-                   .OnDelete(DeleteBehavior.Cascade);
+                   .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(c => c.Priority)
                    .WithMany(p => p.Cards)
                    .HasForeignKey(c => c.PriorityId)
-                   .OnDelete(DeleteBehavior.Cascade);
+                   .OnDelete(DeleteBehavior.Restrict);
         }
 
         private void ConfigureCardActivityLog(EntityTypeBuilder<CardActivityLog> builder)
@@ -72,7 +72,7 @@ namespace First_App.Server.DataAccess.Data
             builder.HasOne(c => c.Card)
                    .WithMany(ca => ca.CardActivityLogs)
                    .HasForeignKey(c => c.CardId)
-                   .OnDelete(DeleteBehavior.Cascade);
+                   .OnDelete(DeleteBehavior.Restrict);
         }
 
         private void ConfigureCardColumn(EntityTypeBuilder<CardColumn> builder)
@@ -88,7 +88,7 @@ namespace First_App.Server.DataAccess.Data
             builder.HasOne(c => c.Board)
                    .WithMany(b => b.Columns)
                    .HasForeignKey(c => c.BoardId)
-                   .OnDelete(DeleteBehavior.Cascade);
+                   .OnDelete(DeleteBehavior.Restrict);
         }
 
         private void ConfigurePriority(EntityTypeBuilder<Priority> builder)

@@ -478,7 +478,7 @@ namespace First_App.Server.Migrations
                     b.HasOne("First_App.Server.Entities.Priority", "Priority")
                         .WithMany("Cards")
                         .HasForeignKey("PriorityId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("CardColumn");
 
@@ -490,7 +490,7 @@ namespace First_App.Server.Migrations
                     b.HasOne("First_App.Server.Entities.Card", "Card")
                         .WithMany("CardActivityLogs")
                         .HasForeignKey("CardId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Card");
                 });
@@ -500,7 +500,7 @@ namespace First_App.Server.Migrations
                     b.HasOne("First_App.Server.Entities.Board", "Board")
                         .WithMany("Columns")
                         .HasForeignKey("BoardId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Board");
                 });
